@@ -1,5 +1,6 @@
 package com.hirehub.hirehub.dto.response;
 
+import com.hirehub.hirehub.enums.Role;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,7 +12,7 @@ public class UserResponse {
     private String username;
     private String email;
     private String phone;
-    private String role;
+    private Role role;
     private String status;
     private Long candidateProfileId;
 }

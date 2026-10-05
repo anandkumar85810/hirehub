@@ -5,6 +5,7 @@ import com.hirehub.hirehub.dto.response.JobApplicationResponse;
 import com.hirehub.hirehub.entity.Job;
 import com.hirehub.hirehub.entity.JobApplication;
 import com.hirehub.hirehub.entity.User;
+import com.hirehub.hirehub.enums.ApplicationStatus;
 import com.hirehub.hirehub.exception.ResourceNotFoundException;
 import com.hirehub.hirehub.repository.JobApplicationRepository;
 import com.hirehub.hirehub.repository.JobRepository;
@@ -78,7 +79,7 @@ public class JobApplicationService {
 
         jobApplication.setJob(job);
         jobApplication.setCandidate(candidate);
-        jobApplication.setStatus("APPLIED");
+        jobApplication.setStatus(ApplicationStatus.APPLIED);
         jobApplication.setAppliedAt(LocalDateTime.now());
 
 

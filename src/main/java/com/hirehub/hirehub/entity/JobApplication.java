@@ -1,5 +1,6 @@
 package com.hirehub.hirehub.entity;
 
+import com.hirehub.hirehub.enums.ApplicationStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -28,8 +29,9 @@ public class JobApplication {
     @JoinColumn(name = "job_id", nullable = false)
     private Job job;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private String status;
+    private ApplicationStatus status;
 
     private LocalDateTime appliedAt;
 

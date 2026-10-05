@@ -5,6 +5,7 @@ import com.hirehub.hirehub.dto.response.UserResponse;
 import com.hirehub.hirehub.entity.User;
 import com.hirehub.hirehub.exception.ResourceNotFoundException;
 import com.hirehub.hirehub.repository.UserRepository;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,9 +15,11 @@ import java.util.stream.Collectors;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder ) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public UserResponse createUser(UserRequest userRequest) {
@@ -26,7 +29,7 @@ public class UserService {
         user.setUsername(userRequest.getUsername());
         user.setEmail(userRequest.getEmail());
         user.setPhone(userRequest.getPhone());
-        user.setPassword(userRequest.getPassword());
+        user.setPassword(passwordEncoder.encode(userRequest.getPassword()));
         user.setRole(userRequest.getRole());
         user.setStatus(userRequest.getStatus());
 
@@ -42,7 +45,10 @@ public class UserService {
         userResponse.setPhone(savedUser.getPhone());
         userResponse.setRole(savedUser.getRole());
         userResponse.setStatus(savedUser.getStatus());
-        userResponse.setCandidateProfileId(savedUser.getCandidateProfile().getId());
+
+        if(savedUser.getCandidateProfile() != null){
+            userResponse.setCandidateProfileId(savedUser.getCandidateProfile().getId());
+        }
 
         return userResponse;
     }
@@ -59,7 +65,10 @@ public class UserService {
         userResponse.setPhone(user.getPhone());
         userResponse.setRole(user.getRole());
         userResponse.setStatus(user.getStatus());
-        userResponse.setCandidateProfileId(user.getCandidateProfile().getId());
+
+        if (user.getCandidateProfile() != null) {
+            userResponse.setCandidateProfileId(user.getCandidateProfile().getId());
+        }
 
         return userResponse;
     }
@@ -77,7 +86,10 @@ public class UserService {
                     userResponse.setPhone(user.getPhone());
                     userResponse.setRole(user.getRole());
                     userResponse.setStatus(user.getStatus());
-                    userResponse.setCandidateProfileId(user.getCandidateProfile().getId());
+
+                    if (user.getCandidateProfile() != null) {
+                        userResponse.setCandidateProfileId(user.getCandidateProfile().getId());
+                    }
 
                     return  userResponse;
                 })
@@ -92,7 +104,7 @@ public class UserService {
         user.setUsername(userRequest.getUsername());
         user.setEmail(userRequest.getEmail());
         user.setPhone(userRequest.getPhone());
-        user.setPassword(userRequest.getPassword());
+        user.setPassword(passwordEncoder.encode(userRequest.getPassword()));
         user.setRole(userRequest.getRole());
         user.setStatus(userRequest.getStatus());
 
@@ -106,8 +118,10 @@ public class UserService {
         userResponse.setPhone(updatedUser.getPhone());
         userResponse.setRole(updatedUser.getRole());
         userResponse.setStatus(updatedUser.getStatus());
-        userResponse.setCandidateProfileId(updatedUser.getCandidateProfile().getId());
 
+        if (updatedUser.getCandidateProfile() != null) {
+            userResponse.setCandidateProfileId(updatedUser.getCandidateProfile().getId());
+        }
         return userResponse;
     }
 

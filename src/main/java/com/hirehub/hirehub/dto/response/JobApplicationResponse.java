@@ -1,5 +1,6 @@
 package com.hirehub.hirehub.dto.response;
 
+import com.hirehub.hirehub.enums.ApplicationStatus;
 import lombok.Getter;
 import lombok.Setter;
 import java.time.LocalDateTime;
@@ -18,7 +19,7 @@ public class JobApplicationResponse {
 
     private String jobTitle;
 
-    private String status;
+    private ApplicationStatus status;
 
     private LocalDateTime appliedAt;
 }

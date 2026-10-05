@@ -1,5 +1,6 @@
 package com.hirehub.hirehub.dto.request;
 
+import com.hirehub.hirehub.enums.Role;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -25,7 +26,7 @@ public class UserRequest {
     private String phone;
 
     @NotBlank(message = "Role is required")
-    private String role;
+    private Role role;
 
     @NotBlank(message = "Status is required")
     private String status;
