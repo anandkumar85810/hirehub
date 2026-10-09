@@ -1,5 +1,6 @@
 package com.hirehub.hirehub.config;
 
+import com.hirehub.hirehub.exception.SecurityErrorHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -25,6 +26,11 @@ public class SecurityConfig {
 
     private final String secret =
             "HireHubSuperSecretKeyForJwtAuthentication2026Secure";
+    private final SecurityErrorHandler securityErrorHandler;
+
+    public SecurityConfig(SecurityErrorHandler securityErrorHandler) {
+        this.securityErrorHandler = securityErrorHandler;
+    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -106,6 +112,10 @@ public class SecurityConfig {
                         // Everything else requires authentication
                         .anyRequest()
                         .authenticated()
+                )
+                .exceptionHandling(expections -> expections
+                        .authenticationEntryPoint(securityErrorHandler)
+                        .accessDeniedHandler(securityErrorHandler)
                 )
                 .oauth2ResourceServer(
                         oauth2 -> oauth2.jwt(
