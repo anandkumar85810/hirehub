@@ -7,17 +7,19 @@ import com.hirehub.hirehub.exception.ResourceNotFoundException;
 import com.hirehub.hirehub.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@Transactional
 public class UserService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder ) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
     }
@@ -45,6 +47,9 @@ public class UserService {
         userResponse.setPhone(savedUser.getPhone());
         userResponse.setRole(savedUser.getRole());
         userResponse.setStatus(savedUser.getStatus());
+        if (savedUser.getCompany() != null) {
+            userResponse.setCompanyId(savedUser.getCompany().getId());
+        }
 
         if(savedUser.getCandidateProfile() != null){
             userResponse.setCandidateProfileId(savedUser.getCandidateProfile().getId());
@@ -65,6 +70,9 @@ public class UserService {
         userResponse.setPhone(user.getPhone());
         userResponse.setRole(user.getRole());
         userResponse.setStatus(user.getStatus());
+        if (user.getCompany() != null) {
+            userResponse.setCompanyId(user.getCompany().getId());
+        }
 
         if (user.getCandidateProfile() != null) {
             userResponse.setCandidateProfileId(user.getCandidateProfile().getId());
@@ -86,6 +94,9 @@ public class UserService {
                     userResponse.setPhone(user.getPhone());
                     userResponse.setRole(user.getRole());
                     userResponse.setStatus(user.getStatus());
+                    if (user.getCompany() != null) {
+                        userResponse.setCompanyId(user.getCompany().getId());
+                    }
 
                     if (user.getCandidateProfile() != null) {
                         userResponse.setCandidateProfileId(user.getCandidateProfile().getId());
@@ -118,6 +129,9 @@ public class UserService {
         userResponse.setPhone(updatedUser.getPhone());
         userResponse.setRole(updatedUser.getRole());
         userResponse.setStatus(updatedUser.getStatus());
+        if (updatedUser.getCompany() != null) {
+            userResponse.setCompanyId(updatedUser.getCompany().getId());
+        }
 
         if (updatedUser.getCandidateProfile() != null) {
             userResponse.setCandidateProfileId(updatedUser.getCandidateProfile().getId());

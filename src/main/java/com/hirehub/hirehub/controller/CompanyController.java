@@ -6,6 +6,7 @@ import com.hirehub.hirehub.service.CompanyService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.http.HttpStatus;
 
 import java.util.List;
 
@@ -23,7 +24,9 @@ public class CompanyController {
     public ResponseEntity<CompanyResponse> createCompany(@Valid @RequestBody CompanyRequest companyRequest) {
         CompanyResponse companyResponse = companyService.createCompany(companyRequest);
 
-        return ResponseEntity.ok(companyResponse);
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(companyResponse);
     }
 
     @GetMapping("/{id}")

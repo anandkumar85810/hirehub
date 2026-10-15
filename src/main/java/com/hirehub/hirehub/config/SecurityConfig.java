@@ -89,6 +89,23 @@ public class SecurityConfig {
                         .requestMatchers("/api/admin/**")
                         .hasRole("ADMIN")
 
+                        // User management - ADMIN only
+                        .requestMatchers("/api/users/**")
+                        .hasRole("ADMIN")
+
+                        // Company profile APIs
+                        .requestMatchers(HttpMethod.POST, "/api/companies/**")
+                        .hasRole("COMPANY")
+
+                        .requestMatchers(HttpMethod.PUT, "/api/companies/**")
+                        .hasAnyRole("COMPANY", "ADMIN")
+
+                        .requestMatchers(HttpMethod.DELETE, "/api/companies/**")
+                        .hasAnyRole("COMPANY", "ADMIN")
+
+                        .requestMatchers(HttpMethod.GET, "/api/companies/**")
+                        .authenticated()
+
                         // View jobs - all authenticated users
                         .requestMatchers(HttpMethod.GET, "/api/jobs/**")
                         .hasAnyRole("CANDIDATE", "COMPANY", "RECRUITER", "ADMIN")

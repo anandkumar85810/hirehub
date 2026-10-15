@@ -15,4 +15,5 @@ public class UserResponse {
     private Role role;
     private String status;
     private Long candidateProfileId;
+    private Long companyId;
 }

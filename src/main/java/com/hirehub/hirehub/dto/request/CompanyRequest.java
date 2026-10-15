@@ -19,7 +19,8 @@ public class CompanyRequest {
     @Email(message = "Invalid email formate")
     private String email;
 
-    @Size(max = 500, message = "Description cannot exceed 500 character")
+    @NotBlank(message = "Description is required")
+    @Size(max = 255, message = "Description cannot exceed 255    characters")
     private String description;
 
     @NotBlank(message = "Phone is required")

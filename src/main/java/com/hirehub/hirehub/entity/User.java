@@ -41,4 +41,7 @@ public class User {
 
     @OneToMany(mappedBy = "candidate")
     private List<JobApplication> jobApplications;
+
+    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
+    private Company company;
 }

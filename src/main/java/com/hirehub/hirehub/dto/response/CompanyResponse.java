@@ -15,4 +15,5 @@ public class CompanyResponse {
     private String industry;
     private String website;
     private String location;
+    private Long userId;
 }
