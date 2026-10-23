@@ -24,5 +24,4 @@ public class RegisterRequest {
 
     @Size(max = 10)
     private String phone;
-
 }

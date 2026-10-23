@@ -122,6 +122,26 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.DELETE, "/api/jobs/**")
                         .hasAnyRole("COMPANY", "RECRUITER")
 
+                                // Candidate Profile - create only by Candidate
+                                .requestMatchers(HttpMethod.POST, "/api/candidates")
+                                .hasRole("CANDIDATE")
+
+// Update Candidate Profile
+                                .requestMatchers(HttpMethod.PUT, "/api/candidates/**")
+                                .hasAnyRole("CANDIDATE", "ADMIN")
+
+// Delete Candidate Profile
+                                .requestMatchers(HttpMethod.DELETE, "/api/candidates/**")
+                                .hasAnyRole("CANDIDATE", "ADMIN")
+
+// List candidate profiles - recruiter/company/admin
+                                .requestMatchers(HttpMethod.GET, "/api/candidates")
+                                .hasAnyRole("COMPANY", "RECRUITER", "ADMIN")
+
+// View individual candidate profile
+                                .requestMatchers(HttpMethod.GET, "/api/candidates/**")
+                                .hasAnyRole("CANDIDATE", "COMPANY", "RECRUITER", "ADMIN")
+
                         // Application APIs
                         .requestMatchers("/api/applications/**")
                         .authenticated()

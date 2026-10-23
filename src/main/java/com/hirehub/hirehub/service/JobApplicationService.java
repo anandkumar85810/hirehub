@@ -262,4 +262,26 @@ public class JobApplicationService {
                 })
                 .toList();
     }
+
+    public List<JobApplicationResponse> getAllApplications() {
+
+        return jobApplicationRepository.findAll()
+                .stream()
+                .map(jobApplication ->  {
+                    JobApplicationResponse jobApplicationResponse =
+                            new JobApplicationResponse();
+
+                    jobApplicationResponse.setId(jobApplication.getId());
+                    jobApplicationResponse.setCandidateId(jobApplication.getCandidate().getId());
+                    jobApplicationResponse.setCandidateName(jobApplication.getCandidate().getUsername());
+                    jobApplicationResponse.setJobId(jobApplication.getJob().getId());
+                    jobApplicationResponse.setJobTitle(jobApplication.getJob().getTitle());
+                    jobApplicationResponse.setStatus(jobApplication.getStatus());
+                    jobApplicationResponse.setAppliedAt(jobApplication.getAppliedAt());
+
+                    return jobApplicationResponse;
+                })
+                .toList();
+
+    }
 }
