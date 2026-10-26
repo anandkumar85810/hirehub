@@ -7,8 +7,10 @@ import com.hirehub.hirehub.entity.Job;
 import com.hirehub.hirehub.exception.ResourceNotFoundException;
 import com.hirehub.hirehub.repository.CompanyRepository;
 import com.hirehub.hirehub.repository.JobRepository;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -78,6 +80,7 @@ public class JobService {
         return jobResponse;
     }
 
+    @Cacheable(value = "jobs", key = "'all'")
     public List<JobResponse> getAllJob() {
         List<Job> jobs = jobRepository.findAll();
 
