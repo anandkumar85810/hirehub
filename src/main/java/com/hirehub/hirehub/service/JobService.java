@@ -7,10 +7,10 @@ import com.hirehub.hirehub.entity.Job;
 import com.hirehub.hirehub.exception.ResourceNotFoundException;
 import com.hirehub.hirehub.repository.CompanyRepository;
 import com.hirehub.hirehub.repository.JobRepository;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +25,7 @@ public class JobService {
         this.companyRepository = companyRepository;
     }
 
+    @CacheEvict(value = "jobs", allEntries = true)
     public JobResponse createJob(JobRequest jobRequest) {
 
         Company company = companyRepository.findById(jobRequest.getCompanyId()).orElseThrow(() ->
@@ -60,6 +61,7 @@ public class JobService {
         return jobResponse;
     }
 
+    @Cacheable(value = "jobs", key = "'job_' + #id")
     public JobResponse getJobById(Long id) {
         Job job = jobRepository.findById(id).orElseThrow(() ->
                 new ResourceNotFoundException("Job not found with id: " + id));
@@ -105,6 +107,7 @@ public class JobService {
         return jobResponseList;
     }
 
+    @CacheEvict(value = "jobs", allEntries = true)
     public JobResponse updateJob(JobRequest jobRequest,Long id) {
         Job job = jobRepository.findById(id).orElseThrow(() ->
                 new ResourceNotFoundException("Job not found with id: " + id));
@@ -135,6 +138,7 @@ public class JobService {
         return jobResponse;
     }
 
+    @CacheEvict(value = "jobs", allEntries = true)
     public void deleteJobById(Long id) {
        Job job = jobRepository.findById(id).orElseThrow(() ->
                new ResourceNotFoundException("Job not found with id: " + id));

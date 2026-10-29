@@ -7,6 +7,10 @@ import com.hirehub.hirehub.entity.User;
 import com.hirehub.hirehub.exception.ResourceNotFoundException;
 import com.hirehub.hirehub.repository.CandidateProfileRepository;
 import com.hirehub.hirehub.repository.UserRepository;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -24,6 +28,15 @@ public class CandidateProfileService {
     }
 
     public CandidateProfileResponse createCandidateProfile(CandidateProfileRequest candidateProfileRequest) {
+
+        // Step 1: Verify logged-in user's identity
+        if (!isAdmin()
+                && !candidateProfileRequest.getUserId()
+                .equals(getAuthenticatedUserId())) {
+
+            throw new AccessDeniedException(
+                    "You can create a profile only for yourself");
+        }
 
         User user = userRepository.findById(candidateProfileRequest.getUserId()).orElseThrow(() ->
                 new ResourceNotFoundException("User with id " + candidateProfileRequest.getUserId() + " not found"));
@@ -58,6 +71,17 @@ public class CandidateProfileService {
     public CandidateProfileResponse findById(Long id) {
         CandidateProfile candidateProfile = candidateProfileRepository.findById(id).orElseThrow(() ->
             new ResourceNotFoundException("Candidate Profile with id " + id + " not found"));
+
+//        Authentication authentication =
+//                SecurityContextHolder.getContext().getAuthentication();
+//
+//        boolean candidate = authentication != null
+//                && authentication.getAuthorities().stream()
+//                .anyMatch(a -> a.getAuthority().equals("ROLE_CANDIDATE"));
+//
+//        if (candidate) {
+//            verifyProfileOwnership(candidateProfile);
+//        }
 
         CandidateProfileResponse candidateProfileResponse = new CandidateProfileResponse();
 
@@ -103,6 +127,8 @@ public class CandidateProfileService {
         CandidateProfile candidateProfile = candidateProfileRepository.findById(id).orElseThrow(() ->
                 new ResourceNotFoundException("Candidate Profile with id " + id + " not found"));
 
+        verifyProfileOwnership(candidateProfile);
+
         candidateProfile.setProfilePhoto(candidateProfileRequest.getProfilePhoto());
         candidateProfile.setEducation(candidateProfileRequest.getEducation());
         candidateProfile.setExperience(candidateProfileRequest.getExperience());
@@ -132,6 +158,83 @@ public class CandidateProfileService {
         CandidateProfile candidateProfile = candidateProfileRepository.findById(id).orElseThrow(() ->
                 new ResourceNotFoundException("Candidate Profile with id " + id + " not found"));
 
+        verifyProfileOwnership(candidateProfile);
         candidateProfileRepository.delete(candidateProfile);
+    }
+
+//    private Long getAuthenticatedUserId() {
+//
+//        Authentication authentication =
+//                SecurityContextHolder.getContext().getAuthentication();
+//
+//        if (!(authentication instanceof JwtAuthenticationToken jwtAuth)) {
+//            throw new AccessDeniedException("Authentication required");
+//        }
+//
+//        Object claim = jwtAuth.getToken().getClaim("userId");
+//
+//        if (!(claim instanceof Number number)) {
+//            throw new AccessDeniedException(
+//                    "Valid userId claim missing from token"
+//            );
+//        }
+//
+//        return number.longValue();
+//    }
+
+    private Long getAuthenticatedUserId() {
+
+        Authentication authentication =
+                SecurityContextHolder.getContext().getAuthentication();
+
+        if (authentication == null ||
+                !(authentication.getPrincipal() instanceof Jwt jwt)) {
+            throw new AccessDeniedException("Authentication required");
+        }
+
+        Object userIdClaim = jwt.getClaim("userId");
+
+        System.out.println("JWT userId claim: " + userIdClaim);
+
+        if (userIdClaim instanceof Number number) {
+            return number.longValue();
+        }
+
+        throw new AccessDeniedException(
+                "Valid userId claim missing from token"
+        );
+    }
+
+    private boolean isAdmin() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        return authentication != null && authentication.getAuthorities().stream()
+                .anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"));
+    }
+
+//    private void verifyProfileOwnership(CandidateProfile profile) {
+//        if (!isAdmin()
+//                && !profile.getUser().getId().equals(getAuthenticatedUserId())) {
+//            throw new AccessDeniedException(
+//                    "You are not allowed to modify this candidate profile");
+//        }
+//    }
+
+    private void verifyProfileOwnership(CandidateProfile profile) {
+
+        Long profileOwnerId = profile.getUser().getId();
+        Long loggedInUserId = getAuthenticatedUserId();
+
+        System.out.println("Candidate Profile ID: " + profile.getId());
+        System.out.println("Profile Owner User ID: " + profileOwnerId);
+        System.out.println("Logged-in User ID: " + loggedInUserId);
+
+        boolean admin = isAdmin();
+
+        if (!admin && !profileOwnerId.equals(loggedInUserId)) {
+            throw new AccessDeniedException(
+                    "You are not allowed to modify this candidate profile"
+            );
+        }
     }
 }
