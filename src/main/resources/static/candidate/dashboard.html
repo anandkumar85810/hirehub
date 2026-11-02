@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candidate Dashboard | HireHub</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="bg-light">
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg bg-white shadow-sm">
+    <div class="container">
+        <a class="navbar-brand fw-bold text-primary" href="../index.html">
+            HireHub
+        </a>
+
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+                <li class="nav-item">
+                    <a class="nav-link" href="jobs.html">Find Jobs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="profile.html">My Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="my-applications.html">
+                        My Applications
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <button class="btn btn-outline-danger ms-lg-2"
+                            id="logoutBtn">
+                        Logout
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Dashboard Header -->
+<section class="container py-4">
+    <div class="bg-white rounded-4 shadow-sm p-4">
+        <h2 class="fw-bold mb-2">
+            Welcome, <span id="candidateName">Candidate</span>!
+        </h2>
+        <p class="text-muted mb-0">
+            Find your next opportunity and manage your job applications.
+        </p>
+    </div>
+</section>
+
+<!-- Dashboard Stats -->
+<section class="container pb-4">
+    <div class="row g-3">
+
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                    <p class="text-muted mb-2">Available Jobs</p>
+                    <h3 class="fw-bold text-primary" id="availableJobsCount">
+                        --
+                    </h3>
+                    <a href="jobs.html" class="text-decoration-none">
+                        Explore Jobs →
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                    <p class="text-muted mb-2">Applications Submitted</p>
+                    <h3 class="fw-bold text-success" id="applicationsCount">
+                        --
+                    </h3>
+                    <a href="my-applications.html" class="text-decoration-none">
+                        View Applications →
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                    <p class="text-muted mb-2">Profile</p>
+                    <h3 class="fw-bold" id="profileStatus">Incomplete</h3>
+                    <a href="profile.html" class="text-decoration-none">
+                        Update Profile →
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- Quick Actions -->
+<section class="container pb-4">
+    <div class="row g-4">
+
+        <div class="col-lg-8">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="fw-bold mb-0">Recommended Jobs</h4>
+                        <a href="jobs.html" class="text-decoration-none">
+                            View All
+                        </a>
+                    </div>
+
+                    <div id="recommendedJobs">
+                        <div class="text-muted">
+                            Recommended jobs will appear here.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body p-4">
+                    <h4 class="fw-bold mb-3">Quick Actions</h4>
+
+                    <a href="jobs.html"
+                       class="btn btn-primary w-100 mb-2">
+                        Browse Jobs
+                    </a>
+
+                    <a href="profile.html"
+                       class="btn btn-outline-primary w-100 mb-2">
+                        Update Profile
+                    </a>
+
+                    <a href="my-applications.html"
+                       class="btn btn-outline-secondary w-100">
+                        Track Applications
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-dark text-white py-4 mt-4">
+    <div class="container text-center">
+        <p class="mb-0">© 2026 HireHub. All rights reserved.</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../js/candidate-dashboard.js"></script>
+</body>
+</html>

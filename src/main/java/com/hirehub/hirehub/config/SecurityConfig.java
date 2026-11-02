@@ -81,6 +81,18 @@ public class SecurityConfig {
 
                 .authorizeHttpRequests(auth -> auth
 
+                                .requestMatchers(
+                                        "/",
+                                        "/index.html",
+                                        "/login.html",
+                                        "/register.html",
+                                        "/jobs.html",
+                                        "/job-details.html",
+                                        "/css/**",
+                                        "/js/**",
+                                        "/images/**"
+                                ).permitAll()
+
                         // Public authentication APIs
                         .requestMatchers("/api/auth/**")
                         .permitAll()

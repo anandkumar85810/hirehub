@@ -30,9 +30,16 @@ public class AuthService {
     }
 
     public AuthResponse register(RegisterRequest registerRequest) {
-
+        //Check email already exists
         if (userRepository.existsByEmail(registerRequest.getEmail())) {
             throw new ResourceNotFoundException("Email already exists");
+        }
+
+        Role requestedRole = registerRequest.getRole();
+
+        //Do not allow public ADMIN registration
+        if (requestedRole == Role.ADMIN) {
+            throw new ResourceNotFoundException("Admin role cannot be assigned through public registration");
         }
 
         User user = new User();
@@ -42,7 +49,8 @@ public class AuthService {
         user.setPhone(registerRequest.getPhone());
         user.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
 
-        user.setRole(Role.CANDIDATE);
+        //Assign requested role
+        user.setRole(requestedRole);
         user.setStatus("ACTIVE");
 
         User savedUser = userRepository.save(user);

@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | HireHub</title>
+
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+            rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="login-page">
+
+<nav class="navbar navbar-expand-lg bg-white shadow-sm">
+    <div class="container">
+        <a class="navbar-brand fw-bold text-primary" href="index.html">
+            HireHub
+        </a>
+
+        <div class="ms-auto">
+            <a href="index.html" class="btn btn-outline-primary">
+                Home
+            </a>
+        </div>
+    </div>
+</nav>
+
+<section class="container login-container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+
+            <div class="card login-card border-0 shadow">
+                <div class="card-body p-4 p-md-5">
+
+                    <div class="text-center mb-4">
+                        <h2 class="fw-bold">Welcome Back</h2>
+                        <p class="text-muted">
+                            Login to your HireHub account
+                        </p>
+                    </div>
+
+                    <form id="loginForm">
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">
+                                Email Address
+                            </label>
+                            <input
+                                    type="email"
+                                    class="form-control form-control-lg"
+                                    id="email"
+                                    placeholder="Enter your email"
+                                    required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="password" class="form-label">
+                                Password
+                            </label>
+                            <input
+                                    type="password"
+                                    class="form-control form-control-lg"
+                                    id="password"
+                                    placeholder="Enter your password"
+                                    required>
+                        </div>
+
+                        <div id="loginMessage" class="mb-3"></div>
+
+                        <button type="submit"
+                                class="btn btn-primary btn-lg w-100">
+                            Login
+                        </button>
+
+                    </form>
+
+                    <p class="text-center mt-4 mb-0">
+                        Don't have an account?
+                        <a href="register.html">Register</a>
+                    </p>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/auth.js"></script>
+</body>
+</html>

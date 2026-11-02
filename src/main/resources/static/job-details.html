@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Details | HireHub</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg bg-white shadow-sm">
+    <div class="container">
+        <a class="navbar-brand fw-bold text-primary" href="index.html">
+            HireHub
+        </a>
+
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+                <li class="nav-item">
+                    <a class="nav-link" href="jobs.html">Find Jobs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login.html">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-primary ms-lg-2" href="register.html">
+                        Register
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Breadcrumb -->
+<div class="container mt-4">
+    <a href="jobs.html" class="text-decoration-none">
+        ← Back to Jobs
+    </a>
+</div>
+
+<!-- Job Details -->
+<section class="container py-4">
+    <div class="row g-4">
+
+        <!-- Main Content -->
+        <div class="col-lg-8">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-4">
+
+                    <div class="d-flex align-items-start gap-3 mb-4">
+                        <div class="company-logo">J</div>
+                        <div>
+                            <h2 class="fw-bold mb-1" id="jobTitle">
+                                Java Spring Boot Developer
+                            </h2>
+                            <p class="text-muted mb-0" id="companyName">
+                                Tech Solutions Pvt Ltd
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="job-meta mb-3">
+                        <span id="jobLocation">📍 Noida</span>
+                        <span id="jobSalary">💰 ₹4–7 LPA</span>
+                        <span id="jobType">💼 Full Time</span>
+                    </div>
+
+                    <span class="badge bg-success-subtle text-success">
+                        Active
+                    </span>
+
+                    <hr class="my-4">
+
+                    <h4 class="fw-bold">Job Description</h4>
+                    <p id="jobDescription">
+                        We are looking for a Java Spring Boot Developer
+                        to join our development team. The candidate will
+                        design, develop and maintain backend applications
+                        and REST APIs.
+                    </p>
+
+                    <h4 class="fw-bold mt-4">Responsibilities</h4>
+                    <ul id="jobResponsibilities">
+                        <li>Develop REST APIs using Spring Boot.</li>
+                        <li>Work with MySQL database and JPA/Hibernate.</li>
+                        <li>Write clean, maintainable and tested code.</li>
+                        <li>Collaborate with frontend developers.</li>
+                        <li>Debug and improve application performance.</li>
+                    </ul>
+
+                    <h4 class="fw-bold mt-4">Required Skills</h4>
+                    <div id="jobSkills" class="d-flex flex-wrap gap-2">
+                        <span class="badge text-bg-light border">Java</span>
+                        <span class="badge text-bg-light border">Spring Boot</span>
+                        <span class="badge text-bg-light border">MySQL</span>
+                        <span class="badge text-bg-light border">REST API</span>
+                        <span class="badge text-bg-light border">Git</span>
+                    </div>
+
+                    <h4 class="fw-bold mt-4">Experience</h4>
+                    <p id="jobExperience">0–2 years</p>
+
+                    <h4 class="fw-bold mt-4">Employment Type</h4>
+                    <p id="jobEmploymentType">Full Time</p>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="col-lg-4">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <h5 class="fw-bold">Apply for this Job</h5>
+                    <p class="text-muted">
+                        Interested in this opportunity? Submit your application.
+                    </p>
+
+                    <button class="btn btn-primary w-100"
+                            id="applyButton">
+                        Apply Now
+                    </button>
+
+                    <div id="applyMessage" class="mt-3"></div>
+
+                    <hr class="my-4">
+
+                    <h5 class="fw-bold">About Company</h5>
+                    <p class="text-muted mb-2" id="companyDescription">
+                        A technology company focused on building modern
+                        software solutions.
+                    </p>
+
+                    <p class="mb-2">
+                        <strong>Industry:</strong>
+                        <span id="companyIndustry">IT Services</span>
+                    </p>
+
+                    <p class="mb-2">
+                        <strong>Location:</strong>
+                        <span id="companyLocation">Noida, India</span>
+                    </p>
+
+                    <p class="mb-0">
+                        <strong>Website:</strong>
+                        <a href="#" id="companyWebsite" target="_blank">
+                            Visit Website
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<footer class="bg-dark text-white py-4 mt-4">
+    <div class="container text-center">
+        <p class="mb-0">© 2026 HireHub. All rights reserved.</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/job-details.js"></script>
+</body>
+</html>

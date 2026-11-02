@@ -1,0 +1,240 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Jobs | HireHub</title>
+
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+            rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg bg-white shadow-sm">
+    <div class="container">
+        <a class="navbar-brand fw-bold text-primary" href="index.html">
+            HireHub
+        </a>
+
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+                <li class="nav-item">
+                    <a class="nav-link active" href="jobs.html">Find Jobs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login.html">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-primary ms-lg-2" href="register.html">
+                        Register
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Page Header -->
+<section class="jobs-header py-5">
+    <div class="container">
+        <h1 class="fw-bold">Find Your Next Opportunity</h1>
+        <p class="text-muted mb-0">
+            Explore jobs and take the next step in your career.
+        </p>
+    </div>
+</section>
+
+<!-- Search Section -->
+<section class="container search-section">
+    <div class="card border-0 shadow-sm">
+        <div class="card-body p-4">
+            <form id="jobSearchForm">
+                <div class="row g-3">
+
+                    <div class="col-md-5">
+                        <label for="searchTitle" class="form-label">
+                            Job Title / Keyword
+                        </label>
+                        <input type="text"
+                               id="searchTitle"
+                               class="form-control"
+                               placeholder="e.g. Java Developer">
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="searchLocation" class="form-label">
+                            Location
+                        </label>
+                        <input type="text"
+                               id="searchLocation"
+                               class="form-control"
+                               placeholder="e.g. Noida">
+                    </div>
+
+                    <div class="col-md-3 d-flex align-items-end">
+                        <button type="submit"
+                                class="btn btn-primary w-100">
+                            Search Jobs
+                        </button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- Jobs Listing -->
+<section class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h3 class="fw-bold mb-1">Latest Jobs</h3>
+            <p class="text-muted mb-0">
+                Find opportunities matching your skills
+            </p>
+        </div>
+
+        <select id="employmentFilter" class="form-select job-filter">
+            <option value="">All Job Types</option>
+            <option value="FULL_TIME">Full Time</option>
+            <option value="PART_TIME">Part Time</option>
+            <option value="CONTRACT">Contract</option>
+            <option value="INTERNSHIP">Internship</option>
+        </select>
+    </div>
+
+    <div class="row g-4" id="jobList">
+
+        <!-- Job Card 1 -->
+        <div class="col-md-6 col-lg-4 job-item"
+             data-title="Java Spring Boot Developer"
+             data-location="Noida"
+             data-type="FULL_TIME">
+
+            <div class="card job-card h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between mb-3">
+                        <div class="company-logo">J</div>
+                        <span class="badge bg-success-subtle text-success">
+                            Full Time
+                        </span>
+                    </div>
+
+                    <h5 class="fw-bold">Java Spring Boot Developer</h5>
+                    <p class="text-muted mb-2">Tech Solutions Pvt Ltd</p>
+
+                    <div class="job-meta">
+                        <span>Noida</span>
+                        <span>₹4–7 LPA</span>
+                    </div>
+
+                    <p class="text-muted mt-3">
+                        Develop REST APIs using Java, Spring Boot and MySQL.
+                    </p>
+
+                    <a href="job-details.html?id=1"
+                       class="btn btn-outline-primary w-100 mt-2">
+                        View Details
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Job Card 2 -->
+        <div class="col-md-6 col-lg-4 job-item"
+             data-title="Frontend Developer"
+             data-location="Remote"
+             data-type="FULL_TIME">
+
+            <div class="card job-card h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between mb-3">
+                        <div class="company-logo">D</div>
+                        <span class="badge bg-success-subtle text-success">
+                            Full Time
+                        </span>
+                    </div>
+
+                    <h5 class="fw-bold">Frontend Developer</h5>
+                    <p class="text-muted mb-2">Digital Works</p>
+
+                    <div class="job-meta">
+                        <span>Remote</span>
+                        <span>₹3–6 LPA</span>
+                    </div>
+
+                    <p class="text-muted mt-3">
+                        Build responsive web pages using HTML, CSS and JavaScript.
+                    </p>
+
+                    <a href="job-details.html?id=2"
+                       class="btn btn-outline-primary w-100 mt-2">
+                        View Details
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Job Card 3 -->
+        <div class="col-md-6 col-lg-4 job-item"
+             data-title="Software Engineer Intern"
+             data-location="Gurugram"
+             data-type="INTERNSHIP">
+
+            <div class="card job-card h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between mb-3">
+                        <div class="company-logo">C</div>
+                        <span class="badge bg-warning-subtle text-warning">
+                            Internship
+                        </span>
+                    </div>
+
+                    <h5 class="fw-bold">Software Engineer Intern</h5>
+                    <p class="text-muted mb-2">CodeCraft Technologies</p>
+
+                    <div class="job-meta">
+                        <span>Gurugram</span>
+                        <span>₹15k–25k / month</span>
+                    </div>
+
+                    <p class="text-muted mt-3">
+                        Learn and contribute to real-world software projects.
+                    </p>
+
+                    <a href="job-details.html?id=3"
+                       class="btn btn-outline-primary w-100 mt-2">
+                        View Details
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="noJobsMessage" class="alert alert-info mt-4 d-none">
+        No jobs found. Try another search.
+    </div>
+</section>
+
+<footer class="bg-dark text-white py-4">
+    <div class="container text-center">
+        <p class="mb-0">© 2026 HireHub. All rights reserved.</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/jobs.js"></script>
+</body>
+</html>

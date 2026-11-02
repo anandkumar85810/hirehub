@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Jobs | HireHub</title>
+
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+    >
+    <link rel="stylesheet" href="../css/company/my-jobs.css">
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <!-- Sidebar -->
+        <aside class="col-md-3 col-lg-2 sidebar p-3">
+            <h4 class="mb-4">HireHub</h4>
+
+            <a href="dashboard.html">Dashboard</a>
+            <a href="profile.html">Company Profile</a>
+            <a href="create-job.html">Post a Job</a>
+            <a href="my-jobs.html" class="active">My Jobs</a>
+            <a href="applications.html">Applications</a>
+
+            <hr>
+            <a href="#" id="logoutBtn">Logout</a>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="col-md-9 col-lg-10 main-content">
+
+            <div class="page-header">
+                <div>
+                    <h2>My Jobs</h2>
+                    <p class="text-muted">Manage all your job postings.</p>
+                </div>
+
+                <a href="create-job.html" class="btn btn-primary">
+                    + Post New Job
+                </a>
+            </div>
+
+            <!-- Statistics -->
+            <div class="row g-3 mb-4">
+                <div class="col-sm-6 col-lg-3">
+                    <div class="stat-card">
+                        <span>Total Jobs</span>
+                        <h3 id="totalJobs">0</h3>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-lg-3">
+                    <div class="stat-card">
+                        <span>Active Jobs</span>
+                        <h3 id="activeJobs">0</h3>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-lg-3">
+                    <div class="stat-card">
+                        <span>Inactive Jobs</span>
+                        <h3 id="inactiveJobs">0</h3>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-lg-3">
+                    <div class="stat-card">
+                        <span>Closed Jobs</span>
+                        <h3 id="closedJobs">0</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Search and Filter -->
+            <div class="filter-card mb-4">
+                <div class="row g-3">
+                    <div class="col-md-8">
+                        <input
+                                type="text"
+                                id="searchInput"
+                                class="form-control"
+                                placeholder="Search by job title or location..."
+                        >
+                    </div>
+
+                    <div class="col-md-4">
+                        <select id="statusFilter" class="form-select">
+                            <option value="">All Statuses</option>
+                            <option value="ACTIVE">Active</option>
+                            <option value="INACTIVE">Inactive</option>
+                            <option value="CLOSED">Closed</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jobs Table -->
+            <div class="table-card">
+                <div class="table-responsive">
+                    <table class="table align-middle">
+                        <thead>
+                        <tr>
+                            <th>Job Title</th>
+                            <th>Location</th>
+                            <th>Employment</th>
+                            <th>Salary</th>
+                            <th>Status</th>
+                            <th>Posted</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+
+                        <tbody id="jobsTableBody">
+                        <tr>
+                            <td colspan="7" class="text-center py-4">
+                                Loading jobs...
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="messageBox" class="mt-3"></div>
+        </main>
+    </div>
+</div>
+
+<script src="../js/company/my-jobs.js"></script>
+</body>
+</html>

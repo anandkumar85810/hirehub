@@ -38,7 +38,7 @@ public class Company {
     @OneToMany(mappedBy = "company")
     private List<Job> jobs;
 
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "user_id", nullable = false, unique = true)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", unique = true)
     private User user;
 }

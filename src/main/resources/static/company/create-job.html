@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Job | HireHub</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-light">
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg bg-white shadow-sm">
+    <div class="container">
+        <a class="navbar-brand fw-bold text-primary" href="index.html">
+            HireHub
+        </a>
+
+        <div class="ms-auto">
+            <a href="company-dashboard.html" class="btn btn-outline-secondary">
+                Dashboard
+            </a>
+            <button class="btn btn-outline-danger ms-2" id="logoutBtn">
+                Logout
+            </button>
+        </div>
+    </div>
+</nav>
+
+<!-- Create Job Form -->
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-9">
+
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-4 p-md-5">
+
+                    <h2 class="fw-bold mb-2">Post a New Job</h2>
+                    <p class="text-muted mb-4">
+                        Enter the job details to find the right candidate.
+                    </p>
+
+                    <div id="message"></div>
+
+                    <form id="createJobForm">
+
+                        <div class="mb-3">
+                            <label for="title" class="form-label">
+                                Job Title *
+                            </label>
+                            <input type="text" class="form-control"
+                                   id="title" required
+                                   placeholder="e.g. Java Spring Boot Developer">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="description" class="form-label">
+                                Job Description *
+                            </label>
+                            <textarea class="form-control"
+                                      id="description" rows="5"
+                                      required
+                                      placeholder="Describe the job responsibilities and requirements"></textarea>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="location" class="form-label">
+                                    Location *
+                                </label>
+                                <input type="text" class="form-control"
+                                       id="location" required
+                                       placeholder="e.g. Noida">
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="employmentType" class="form-label">
+                                    Employment Type
+                                </label>
+                                <select class="form-select" id="employmentType">
+                                    <option value="">Select type</option>
+                                    <option value="FULL_TIME">Full Time</option>
+                                    <option value="PART_TIME">Part Time</option>
+                                    <option value="CONTRACT">Contract</option>
+                                    <option value="INTERNSHIP">Internship</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="salaryMin" class="form-label">
+                                    Minimum Salary (₹)
+                                </label>
+                                <input type="number" class="form-control"
+                                       id="salaryMin" min="0"
+                                       placeholder="e.g. 300000">
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="salaryMax" class="form-label">
+                                    Maximum Salary (₹)
+                                </label>
+                                <input type="number" class="form-control"
+                                       id="salaryMax" min="0"
+                                       placeholder="e.g. 600000">
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="experienceRequired" class="form-label">
+                                Experience Required (Years)
+                            </label>
+                            <input type="number" class="form-control"
+                                   id="experienceRequired" min="0"
+                                   placeholder="e.g. 2">
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="companyId" class="form-label">
+                                Company ID *
+                            </label>
+                            <input type="number" class="form-control"
+                                   id="companyId" min="1" required
+                                   placeholder="Your company ID">
+                            <small class="text-muted">
+                                Use the company ID associated with your account.
+                            </small>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">
+                            Publish Job
+                        </button>
+
+                        <a href="company-dashboard.html"
+                           class="btn btn-outline-secondary ms-2">
+                            Cancel
+                        </a>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/create-job.js"></script>
+</body>
+</html>
